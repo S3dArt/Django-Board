@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{board.name }} - {{block.super}}
-
+    {{ board.name }} - {{ block.super}}
 {% endblock %}
 
 {% block breadcrumb %}
@@ -11,5 +10,26 @@
 {% endblock %}
 
 {% block content %}
-    <!-- content -->
+    <table class="table">
+        <thead class="thead-inverse">
+            <tr>
+                <th>Topics</th>
+                <th>Starter</th>
+                <th>Raplies</th>
+                <th>Views</th>
+                <th>Last Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for topic in board.topics.all %}
+            <tr>
+                <td>{{ topic.subject }}</td>
+                <td>{{ topic.starter.username }}</td>
+                <td>0</td>
+                <td>0</td>
+                <td>{{ topic.last_updated }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
